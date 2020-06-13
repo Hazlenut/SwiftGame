@@ -14,11 +14,70 @@ class GameViewController: UIViewController {
     var population:Int = 0
     var turret:Int = 0
     var turretAmount:Int = 0
-    var gold:Int = 0
-    var age:Int = 1
+    var gold:Int = 100000
+    var age:Int = 0
+    var unit:String = "hi"
+    /*
+    let labelOne: UILabel = {
+        let label = UILabel()
+        label.text = "Scroll Top"
+        label.backgroundColor = .red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let labelTwo: UILabel = {
+        let label = UILabel()
+        label.text = "Scroll Bottom"
+        label.backgroundColor = .green
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let scrollView: UIScrollView = {
+        let v = UIScrollView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = .cyan
+        return v
+    }()
+     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        self.view.addSubview(scrollView)
+        
+        // constrain the scroll view to 8-pts on each side
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8.0).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 8.0).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8.0).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8.0).isActive = true
+
+        // add labelOne to the scroll view
+        scrollView.addSubview(labelOne)
+
+        // constrain labelOne to left & top with 16-pts padding
+        // this also defines the left & top of the scroll content
+        labelOne.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16.0).isActive = true
+        labelOne.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16.0).isActive = true
+
+        // add labelTwo to the scroll view
+        scrollView.addSubview(labelTwo)
+
+        // constrain labelTwo at 400-pts from the left
+        labelTwo.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 400.0).isActive = true
+
+        // constrain labelTwo at 1000-pts from the top
+        labelTwo.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 1000).isActive = true
+
+        // constrain labelTwo to right & bottom with 16-pts padding
+        labelTwo.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -16.0).isActive = true
+        labelTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -16.0).isActive = true
+
+        
+        */
+        
+        
         var j:Int = 20
         let buttons = ["R", "M", "I", "B", "1", "2", "Buy", "Sell", "Age", "Spec."]
         for i in buttons {
@@ -32,9 +91,9 @@ class GameViewController: UIViewController {
             range.tintColor = .black
             range.layer.cornerRadius = 15.0
             if i == "R" || i == "M" || i == "I" || i == "B" {
-                range.addTarget(self, action: #selector(unitClicked), for: .touchUpInside)
+                range.addTarget(self, action: #selector(unitClicked1), for: .touchUpInside)
             }
-            else if i == "1" || i == "2"    {
+            else if i == "1" || i == "2" {
                 range.addTarget(self, action: #selector(buildTurret), for: .touchUpInside)
             }
             else if i == "Buy"{
@@ -90,16 +149,23 @@ class GameViewController: UIViewController {
         return true
     }
     
-    @objc func unitClicked(){
+    @objc func unitClicked1(_ sender: UIButton){
+        let unitType = sender.title(for: .normal)!
+        
         if population == 10 {
             print("Population Maxed")
         }
         if population < 10 {
             population += 1
             print("Units:", population)
+            if String(unitType) == "R" {gold -= 25 + age * 10}
+            else if String(unitType) == "M" {gold -= 35 + age * 12}
+            else if String(unitType) == "I" {gold -= 45 + age * 12}
+            else if String(unitType) == "B" {gold -= 55 + age * 15}
+            print(gold)
         }
     }
-    
+
     @objc func buildTurret(){
         if turret == turretAmount {
             print("No available Spots")
@@ -116,7 +182,9 @@ class GameViewController: UIViewController {
         }
         if turretAmount < 3 {
             turretAmount += 1
-            print("Turret Amount:", turretAmount);
+            print("Turret Amount:", turretAmount)
+            gold -= age * 50
+            print(gold)
         }
     }
     
@@ -125,33 +193,26 @@ class GameViewController: UIViewController {
             print("No Turrets to Sell")
         }
         if turret > 0 {
-        turret -= 1
-        print("Turrets:", turret);
+            turret -= 1
+            print("Turrets:", turret)
+            gold += age * 25
         }
     }
     
     @objc func nextAge(){
-        if age == 6 {
-            print("Max Age")
-        }
-        if age < 6 {
-            age += 1
-        }
-        if age == 2 {
-            print("Stone")
-        }
-        if age == 3 {
-            print("Medieval")
-        }
-        if age == 4 {
-            print("Modern")
-        }
-        if age == 5 {
-            print("Future")
-        }
-        if age == 6 {
-            print("Holy Land")
-        }
+        let ages = ["random","Stone","Med","Modern","Future","Holy land"]
+        if age < 5 {age += 1}
+        print(ages[age])
+        gold -= age * 500
+    }
+    
+    @objc func special(){
+        //Int.random(in: 1..<100)
+        
+    }
+    
+    func main(){
+        print(gold)
     }
 }
 

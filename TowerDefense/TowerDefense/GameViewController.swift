@@ -10,13 +10,16 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UIScrollViewDelegate {
     var population:Int = 0
     var turret:Int = 0
     var turretAmount:Int = 0
     var gold:Int = 100000
     var age:Int = 0
     var unit:String = "hi"
+    var scrollView: UIScrollView!
+    let textData: String = "abcdefghijklmnopqrstuvwxyz now i know my abcs next time wont you sing with me aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz nnooww ii kknnooww mmyy aabbccss nneexxtt ttiimmee wwoonntt yyoouu ssiinngg wwiitthh mmee"
+
     /*
     let labelOne: UILabel = {
         let label = UILabel()
@@ -85,7 +88,7 @@ class GameViewController: UIViewController {
             range.frame =  CGRect(x: j, y: 20, width: 50, height: 50)
             range.setTitle(i, for: .normal)
             range.layer.borderWidth = 3.0
-            range.layer.borderColor = UIColor.white.cgColor
+            range.layer.borderColor = UIColor.black.cgColor
             range.backgroundColor = UIColor(white: 1, alpha: 0.3)
             range.titleLabel?.font =  UIFont(name: "GillSans-Italic", size: 20)
             range.tintColor = .black
@@ -125,12 +128,30 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
             }
-            
+            self.scrollView = UIScrollView()
+            self.scrollView.delegate = self
+            let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
+            textLabel.text = textData
+            self.scrollView.contentSize = CGSize(width: textLabel.frame.width, height: textLabel.frame.height)
+
+                       scrollView.addSubview(textLabel)
+            view.addSubview(scrollView)
+            view.ignoresSiblingOrder = true
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true
             view.showsNodeCount = true
         }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        scrollView.frame = view.bounds
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     override var shouldAutorotate: Bool {

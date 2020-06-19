@@ -12,6 +12,16 @@ import GameplayKit
 class GameScene: SKScene {
     var sceneCam: SKCameraNode!
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
@@ -90,4 +100,5 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+ */
 }

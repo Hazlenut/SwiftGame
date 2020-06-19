@@ -19,7 +19,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var unit:String = "hi"
     var scrollView: UIScrollView!
     let textData: String = "abcdefghijklmnopqrstuvwxyz now i know my abcs next time wont you sing with me aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz nnooww ii kknnooww mmyy aabbccss nneexxtt ttiimmee wwoonntt yyoouu ssiinngg wwiitthh mmee"
-
+    let tree = UIImage(named: "tree.jpg")
     /*
     let labelOne: UILabel = {
         let label = UILabel()
@@ -83,6 +83,35 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         
         var j:Int = 20
         let buttons = ["R", "M", "I", "B", "1", "2", "Buy", "Sell", "Age", "Spec."]
+        
+        
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = SKScene(fileNamed: "GameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            self.scrollView = UIScrollView()
+            self.scrollView.delegate = self
+            let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
+            textLabel.text = textData
+            self.scrollView.contentSize = CGSize(width: textLabel.frame.width, height: textLabel.frame.height)
+                       scrollView.addSubview(textLabel)
+            view.addSubview(scrollView)
+            view.ignoresSiblingOrder = true
+            view.ignoresSiblingOrder = true
+            scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "tree")!)
+            //scrollView.backgroundColor = [UIColor, colorWithPatternImage,:[UIImage imageNamed:@"tree"]]
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+            
+            
+        }
         for i in buttons {
             let range = UIButton.init(type: .roundedRect)
             range.frame =  CGRect(x: j, y: 20, width: 50, height: 50)
@@ -117,30 +146,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 j += 40
             }
             
-        }
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            self.scrollView = UIScrollView()
-            self.scrollView.delegate = self
-            let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
-            textLabel.text = textData
-            self.scrollView.contentSize = CGSize(width: textLabel.frame.width, height: textLabel.frame.height)
-
-                       scrollView.addSubview(textLabel)
-            view.addSubview(scrollView)
-            view.ignoresSiblingOrder = true
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
     override func viewDidLayoutSubviews() {

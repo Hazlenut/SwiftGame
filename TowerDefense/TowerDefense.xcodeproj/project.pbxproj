@@ -17,6 +17,7 @@
 		834693392486330C004F1359 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834693372486330C004F1359 /* LaunchScreen.storyboard */; };
 		834693442486330C004F1359 /* TowerDefenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834693432486330C004F1359 /* TowerDefenseTests.swift */; };
 		8346934F2486330C004F1359 /* TowerDefenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8346934E2486330C004F1359 /* TowerDefenseUITests.swift */; };
+		8398D435249D53F10073F18B /* ShooterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398D434249D53F10073F18B /* ShooterScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8346934A2486330C004F1359 /* TowerDefenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TowerDefenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8346934E2486330C004F1359 /* TowerDefenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerDefenseUITests.swift; sourceTree = "<group>"; };
 		834693502486330C004F1359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8398D434249D53F10073F18B /* ShooterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShooterScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				8346932A2486330B004F1359 /* GameScene.sks */,
 				8346932C2486330B004F1359 /* Actions.sks */,
 				8346932E2486330B004F1359 /* GameScene.swift */,
+				8398D434249D53F10073F18B /* ShooterScene.swift */,
 				834693302486330B004F1359 /* GameViewController.swift */,
 				834693322486330B004F1359 /* Main.storyboard */,
 				834693352486330C004F1359 /* Assets.xcassets */,
@@ -270,6 +273,7 @@
 				8346932F2486330B004F1359 /* GameScene.swift in Sources */,
 				834693312486330B004F1359 /* GameViewController.swift in Sources */,
 				834693292486330B004F1359 /* AppDelegate.swift in Sources */,
+				8398D435249D53F10073F18B /* ShooterScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
